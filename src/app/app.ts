@@ -8,5 +8,5 @@ import { RouterOutlet } from '@angular/router';
     styleUrl: './app.css',
 })
 export class App {
-    protected title = 'angular-course';
+    protected title = 'Angular Core Deep Dive';
 }
