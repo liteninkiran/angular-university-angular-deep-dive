@@ -1,4 +1,6 @@
-export const COURSES: any = [
+import { Course } from './app/model/course';
+
+export const COURSES: Course[] = [
     {
         id: 1,
         description: 'Angular Core Deep Dive',
@@ -28,6 +30,7 @@ export const COURSES: any = [
         iconUrl:
             'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-ngrx-course.png',
         category: 'ADVANCED',
+        lessonsCount: 10,
     },
 
     {
@@ -68,6 +71,7 @@ export const COURSES: any = [
         iconUrl:
             'https://angular-academy.s3.amazonaws.com/thumbnails/advanced_angular-small-v3.png',
         category: 'ADVANCED',
+        lessonsCount: 10,
     },
     {
         id: 8,
@@ -77,6 +81,7 @@ export const COURSES: any = [
         iconUrl:
             'https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png',
         category: 'BEGINNER',
+        lessonsCount: 10,
     },
     {
         id: 9,
@@ -86,6 +91,7 @@ export const COURSES: any = [
         iconUrl:
             'https://s3-us-west-1.amazonaws.com/angular-academy/blog/images/rxjs-reactive-patterns-small.png',
         category: 'BEGINNER',
+        lessonsCount: 10,
     },
     {
         id: 10,
@@ -95,6 +101,7 @@ export const COURSES: any = [
         longDescription:
             'Build Applications with the official Angular Widget Library',
         category: 'ADVANCED',
+        lessonsCount: 10,
     },
 ];
 
