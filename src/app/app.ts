@@ -9,4 +9,12 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
     protected title = 'Angular Core Deep Dive';
+
+    public onLogoClick() {
+        alert('Hello');
+    }
+
+    public onKeyUp(text: string) {
+        this.title = text;
+    }
 }
