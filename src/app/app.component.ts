@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { COURSES } from '../db-data';
+import { Course } from './model/course';
 
 @Component({
     selector: 'app-root',
@@ -9,4 +10,8 @@ import { COURSES } from '../db-data';
 })
 export class AppComponent {
     public courses = COURSES;
+
+    public onCourseSelected(course: Course) {
+        console.log('Course Selected', course);
+    }
 }

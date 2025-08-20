@@ -6,7 +6,16 @@
 </div>
 
 <div class="courses">
-    <course-card [course]="courses[0]" />
-    <course-card [course]="courses[1]" />
-    <course-card [course]="courses[2]" />
+    <course-card
+        (courseSelected)="onCourseSelected($event)"
+        [course]="courses[0]"
+    />
+    <course-card
+        (courseSelected)="onCourseSelected($event)"
+        [course]="courses[1]"
+    />
+    <course-card
+        (courseSelected)="onCourseSelected($event)"
+        [course]="courses[2]"
+    />
 </div>
