@@ -3,7 +3,7 @@
 </div>
 
 <div class="courses">
-    @for ( course of courses; track trackCourse($index, course) ) {
+    @for ( course of courses; track course.id ) {
     <h1>Count: {{ $count }}</h1>
     <course-card
         (courseSelected)="onCourseSelected($event)"

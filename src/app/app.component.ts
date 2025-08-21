@@ -16,8 +16,4 @@ export class AppComponent {
     public onCourseSelected(course: Course) {
         console.log('Course Selected', course);
     }
-
-    public trackCourse(index: number, course: Course): number {
-        return course.id;
-    }
 }
