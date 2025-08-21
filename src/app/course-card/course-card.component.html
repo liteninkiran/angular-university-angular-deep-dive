@@ -1,6 +1,11 @@
 <div class="course-card">
     <div class="course-title">{{ index }}: {{ course.description }}</div>
+
+    @if(course.iconUrl) {
     <img width="300" alt="Angular Logo" [src]="course.iconUrl" />
+    } @else {
+    <h2>No Image Available</h2>
+    }
 
     <div class="course-description">
         {{ course.longDescription }}
