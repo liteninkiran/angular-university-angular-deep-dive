@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { COURSES } from '../db-data';
 import { Course } from './model/course';
+import { CourseCardComponent } from './course-card/course-card.component';
 
 @Component({
     selector: 'app-root',
@@ -10,11 +11,13 @@ import { Course } from './model/course';
 })
 export class AppComponent {
     public courses = COURSES;
-    public startDate = new Date(2017, 11, 3);
     public imgSource =
         'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png';
 
+    @ViewChild(CourseCardComponent)
+    public card: CourseCardComponent;
+
     public onCourseSelected(course: Course) {
-        console.log('Course Selected', course);
+        console.log(this.card);
     }
 }
