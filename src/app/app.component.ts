@@ -10,8 +10,14 @@ import { Course } from './model/course';
 })
 export class AppComponent {
     public courses = COURSES;
+    public imgSource =
+        'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png';
 
     public onCourseSelected(course: Course) {
         console.log('Course Selected', course);
+    }
+
+    public trackCourse(index: number, course: Course): number {
+        return course.id;
     }
 }
