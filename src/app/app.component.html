@@ -2,8 +2,21 @@
     <img class="logo" [src]="imgSource" />
 </div>
 
+<div class="demo">
+    <div>Date: {{ startDate | date : 'dd MMMM yyyy' }}</div>
+    <div>Title Case: {{ courses[0].description | titlecase }}</div>
+    <div>Currency: {{ 9.99 | currency : 'GBP' }}</div>
+    <div>Percentage: {{ 0.05123 | percent : '1.0-4' }}</div>
+    <div>JSON: {{ courses[0] | json }}</div>
+    <div>
+        <ng-container *ngFor="let pair of courses[0] | keyvalue">
+            <p>{{ pair.key | uppercase }}: {{ pair.value }}</p>
+        </ng-container>
+    </div>
+</div>
+
 <div class="courses">
-    @for (course of courses; track course; let i = $index) {
+    @for (course of courses | slice : 2 : 4; track course; let i = $index) {
     <course-card
         (courseSelected)="onCourseSelected($event)"
         [course]="course"

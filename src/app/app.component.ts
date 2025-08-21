@@ -10,6 +10,7 @@ import { Course } from './model/course';
 })
 export class AppComponent {
     public courses = COURSES;
+    public startDate = new Date(2017, 11, 3);
     public imgSource =
         'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png';
 
