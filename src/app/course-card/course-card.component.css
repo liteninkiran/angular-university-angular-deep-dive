@@ -6,7 +6,3 @@ button:hover {
     cursor: pointer;
     background-color: #0863c5;
 }
-
-.course-card.beginner {
-    background: lightsalmon;
-}

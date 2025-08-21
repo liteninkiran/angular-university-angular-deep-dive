@@ -21,22 +21,4 @@ export class CourseCardComponent {
     public onCourseView(): void {
         this.courseEmitter.emit(this.course);
     }
-
-    public cardClasses() {
-        if (this.course.category === 'BEGINNER') {
-            return ['beginner'];
-        }
-
-        return {
-            beginner: this.course.category === 'BEGINNER',
-        };
-    }
-
-    public cardStyles() {
-        if (this.course.iconUrl) {
-            return {
-                'background-image': `url(${this.course.iconUrl})`,
-            };
-        }
-    }
 }
