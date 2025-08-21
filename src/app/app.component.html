@@ -3,14 +3,10 @@
 </div>
 
 <div class="courses">
-    @for ( course of courses; track course.id ) {
-    <h1>Count: {{ $count }}</h1>
     <course-card
+        *ngFor="let course of courses; index as i"
         (courseSelected)="onCourseSelected($event)"
         [course]="course"
-        [index]="$index + 1"
+        [index]="i + 1"
     />
-    } @empty {
-    <h1>No Courses Found</h1>
-    }
 </div>
