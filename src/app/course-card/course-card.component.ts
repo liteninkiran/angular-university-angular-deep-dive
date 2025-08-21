@@ -31,4 +31,12 @@ export class CourseCardComponent {
             beginner: this.course.category === 'BEGINNER',
         };
     }
+
+    public cardStyles() {
+        if (this.course.iconUrl) {
+            return {
+                'background-image': `url(${this.course.iconUrl})`,
+            };
+        }
+    }
 }

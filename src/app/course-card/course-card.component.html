@@ -1,15 +1,16 @@
-<div class="course-card" [ngClass]="cardClasses()">
-    <div class="course-title">{{ index }}: {{ course.description }}</div>
-
-    @if(course.iconUrl) {
-    <img width="300" alt="Angular Logo" [src]="course.iconUrl" />
-    } @else {
-    <p>No Image Available</p>
-    }
+<div class="course-card" [ngClass]="cardClasses()" [ngStyle]="cardStyles()">
+    <div class="course-title" [style.text-decoration]="'underline'">
+        {{ index }}: {{ course.description }}
+    </div>
 
     <div class="course-description">
         {{ course.longDescription }}
     </div>
 
-    <button (click)="onCourseView()">View Course</button>
+    <button
+        (click)="onCourseView()"
+        [ngStyle]="{ 'text-decoration': 'underline' }"
+    >
+        View Course
+    </button>
 </div>
