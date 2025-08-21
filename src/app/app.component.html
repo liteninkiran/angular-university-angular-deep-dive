@@ -3,10 +3,11 @@
 </div>
 
 <div class="courses">
+    @for (course of courses; track course; let i = $index) {
     <course-card
-        *ngFor="let course of courses; index as i"
         (courseSelected)="onCourseSelected($event)"
         [course]="course"
         [index]="i + 1"
     />
+    }
 </div>
