@@ -8,6 +8,7 @@ import {
     Input,
     Output,
     QueryList,
+    TemplateRef,
 } from '@angular/core';
 import { Course } from '../model/course';
 import { CommonModule } from '@angular/common';
@@ -25,6 +26,9 @@ export class CourseCardComponent implements AfterViewInit, AfterContentInit {
 
     @Input({ required: true })
     public index: number;
+
+    @Input({ required: true })
+    public noImageTpl: TemplateRef<any>;
 
     @Output('courseSelected')
     public courseEmitter = new EventEmitter<Course>();

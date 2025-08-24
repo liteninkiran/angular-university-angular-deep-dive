@@ -12,19 +12,11 @@
         <img src="/assets/empty-image.png" />
     </ng-template>
 
-    <ng-container
-        *ngTemplateOutlet="
-            blankImage;
-            context: { description: course.description }
-        "
-    ></ng-container>
-
-    <hr />
-
     <course-card
         (courseSelected)="onCourseSelected($event)"
         [course]="course"
         [index]="1"
+        [noImageTpl]="blankImage"
     >
         <course-image [src]="course.iconUrl"></course-image>
 
