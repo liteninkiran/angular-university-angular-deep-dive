@@ -5,11 +5,30 @@
 <button (click)="onCoursesEdited()">Edit Courses</button>
 
 <div class="courses">
-    @for(course of courses; track course.id) {
+    @if(courses[0]; as course) {
     <course-card
         (courseSelected)="onCourseSelected($event)"
         [course]="course"
-        [index]="$index + 1"
-    />
+        [index]="1"
+    >
+        <div class="course-image">
+            <img width="300" alt="Angular Logo" [src]="course.iconUrl" />
+            <h5>Total Lessons: 5</h5>
+        </div>
+
+        <div class="course-description">
+            {{ course.longDescription }}
+        </div>
+
+        Edit Description: <textarea></textarea>
+    </course-card>
+
+    <course-card
+        (courseSelected)="onCourseSelected($event)"
+        [course]="courses[1]"
+        [index]="2"
+    >
+        <h5>Total Lessons: 8</h5>
+    </course-card>
     }
 </div>
