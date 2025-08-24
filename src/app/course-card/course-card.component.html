@@ -1,10 +1,9 @@
 @if (course) {
-<div class="course-card">
+<div class="course-card" #container>
     <div class="course-title">{{ index }}: {{ course.description }}</div>
 
-    <ng-content select=".course-image" />
+    <ng-content select="course-image" />
     <ng-content select=".course-description" />
-    <ng-content />
 
     <div class="course-category">
         @switch(course.category) { @case ('BEGINNER') {
