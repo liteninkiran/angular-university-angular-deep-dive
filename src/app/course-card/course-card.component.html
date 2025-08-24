@@ -2,12 +2,7 @@
 <div class="course-card" #container>
     <div class="course-title">{{ index }}: {{ course.description }}</div>
 
-    @if(course.iconUrl) {
-    <ng-content select="course-image" />
-    } @else {
-    <p class="warn">{{ course.description }} has no image yet</p>
-    <img src="/assets/empty-image.png" />
-    }
+    <ng-content select="course-image" *ngIf="course.iconUrl" />
     <ng-content select=".course-description" />
 
     <div class="course-category">
