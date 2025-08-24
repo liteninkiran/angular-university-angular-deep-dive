@@ -1,5 +1,11 @@
-import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { COURSES } from '../db-data';
+import {
+    AfterViewInit,
+    Component,
+    ElementRef,
+    QueryList,
+    ViewChildren,
+} from '@angular/core';
+import { COURSES, EXTRA_COURSE } from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
 
@@ -14,29 +20,18 @@ export class AppComponent implements AfterViewInit {
     public imgSource =
         'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png';
 
-    @ViewChild('cardRef1', { read: ElementRef })
-    public card1: CourseCardComponent;
+    @ViewChildren(CourseCardComponent, { read: ElementRef })
+    public cards: QueryList<CourseCardComponent>;
 
-    @ViewChild('cardRef2')
-    public card2: CourseCardComponent;
-
-    @ViewChild('container')
-    public container: ElementRef;
-
-    @ViewChild('courseImage')
-    public courseImage: ElementRef;
-
-    constructor() {
-        // console.log('constructor', this.card1);
-    }
+    constructor() {}
 
     public ngAfterViewInit(): void {
-        // console.log('ngAfterViewInit', this.card1);       // Works
-        // this.courses[0].description = 'Test';             // Causes error
-        // console.log('ngAfterViewInit', this.courseImage); // Gives undefined
+        this.cards.changes.subscribe((cards) => console.log(cards));
     }
 
-    public onCourseSelected(course: Course) {
-        // console.log('onCourseSelected', this.card1);
+    public onCourseSelected(course: Course) {}
+
+    public onCoursesEdited() {
+        this.courses.push(EXTRA_COURSE);
     }
 }

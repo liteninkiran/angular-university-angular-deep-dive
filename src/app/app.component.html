@@ -2,18 +2,14 @@
     <img class="logo" [src]="imgSource" />
 </div>
 
-<div class="courses" #container>
-    <course-card
-        #cardRef1
-        (courseSelected)="onCourseSelected($event)"
-        [course]="courses[0]"
-        [index]="1"
-    />
+<button (click)="onCoursesEdited()">Edit Courses</button>
 
+<div class="courses">
+    @for(course of courses; track course.id) {
     <course-card
-        #cardRef2
         (courseSelected)="onCourseSelected($event)"
-        [course]="courses[1]"
-        [index]="2"
+        [course]="course"
+        [index]="$index + 1"
     />
+    }
 </div>
