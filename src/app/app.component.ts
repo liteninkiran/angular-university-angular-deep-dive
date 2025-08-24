@@ -5,7 +5,7 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import { COURSES, EXTRA_COURSE } from '../db-data';
+import { COURSES } from '../db-data';
 import { Course } from './model/course';
 import { CourseCardComponent } from './course-card/course-card.component';
 
@@ -17,21 +17,13 @@ import { CourseCardComponent } from './course-card/course-card.component';
 })
 export class AppComponent implements AfterViewInit {
     public courses = COURSES;
-    public imgSource =
-        'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png';
 
     @ViewChildren(CourseCardComponent, { read: ElementRef })
-    public cards: QueryList<CourseCardComponent>;
+    public cards: QueryList<ElementRef>;
 
     constructor() {}
 
-    public ngAfterViewInit(): void {
-        this.cards.changes.subscribe((cards) => console.log(cards));
-    }
+    public ngAfterViewInit(): void {}
 
-    public onCourseSelected(course: Course) {}
-
-    public onCoursesEdited() {
-        this.courses.push(EXTRA_COURSE);
-    }
+    public onCourseSelected(course: Course): void {}
 }

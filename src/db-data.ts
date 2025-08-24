@@ -1,14 +1,11 @@
-import { Course } from './app/model/course';
-
-export const COURSES: Course[] = [
+export const COURSES: any = [
     {
         id: 1,
         description: 'Angular Core Deep Dive',
         iconUrl: '',
-        //            'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
+        // 'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
         longDescription:
             'A detailed walk-through of the most important part of Angular - the Core and Common modules',
-        category: 'INTERMEDIATE',
         lessonsCount: 10,
     },
     {
@@ -30,7 +27,6 @@ export const COURSES: Course[] = [
         iconUrl:
             'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-ngrx-course.png',
         category: 'ADVANCED',
-        lessonsCount: 10,
     },
 
     {
@@ -57,7 +53,7 @@ export const COURSES: Course[] = [
         id: 6,
         description: 'Angular PWA Course',
         longDescription:
-            "<p class='course-description'>Learn Angular Progressive Web Applications, build the future of the Web Today.",
+            'Learn Angular Progressive Web Applications, build the future of the Web Today.',
         iconUrl:
             'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-pwa-course.png',
         category: 'ADVANCED',
@@ -71,7 +67,6 @@ export const COURSES: Course[] = [
         iconUrl:
             'https://angular-academy.s3.amazonaws.com/thumbnails/advanced_angular-small-v3.png',
         category: 'ADVANCED',
-        lessonsCount: 10,
     },
     {
         id: 8,
@@ -81,7 +76,6 @@ export const COURSES: Course[] = [
         iconUrl:
             'https://angular-academy.s3.amazonaws.com/thumbnails/typescript-2-small.png',
         category: 'BEGINNER',
-        lessonsCount: 10,
     },
     {
         id: 9,
@@ -91,7 +85,6 @@ export const COURSES: Course[] = [
         iconUrl:
             'https://s3-us-west-1.amazonaws.com/angular-academy/blog/images/rxjs-reactive-patterns-small.png',
         category: 'BEGINNER',
-        lessonsCount: 10,
     },
     {
         id: 10,
@@ -101,21 +94,9 @@ export const COURSES: Course[] = [
         longDescription:
             'Build Applications with the official Angular Widget Library',
         category: 'ADVANCED',
-        lessonsCount: 10,
     },
 ];
 
 export function findCourseById(courseId: number) {
     return COURSES.find((course) => course.id === courseId);
 }
-
-export const EXTRA_COURSE = {
-    id: 11,
-    description: 'Angular Core Deep Dive',
-    iconUrl:
-        'https://s3-us-west-1.amazonaws.com/angular-university/course-images/angular-core-in-depth-small.png',
-    longDescription:
-        'A detailed walk-through of the most important part of Angular - the Core and Common modules',
-    category: 'INTERMEDIATE',
-    lessonsCount: 10,
-};
