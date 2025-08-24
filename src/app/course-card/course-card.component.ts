@@ -1,11 +1,13 @@
 import {
+    AfterContentInit,
     AfterViewInit,
     Component,
-    ContentChild,
+    ContentChildren,
     ElementRef,
     EventEmitter,
     Input,
     Output,
+    QueryList,
 } from '@angular/core';
 import { Course } from '../model/course';
 import { CommonModule } from '@angular/common';
@@ -17,7 +19,7 @@ import { CourseImageComponent } from '../course-image/course-image.component';
     templateUrl: './course-card.component.html',
     styleUrl: './course-card.component.css',
 })
-export class CourseCardComponent implements AfterViewInit {
+export class CourseCardComponent implements AfterViewInit, AfterContentInit {
     @Input({ required: true })
     public course: Course;
 
@@ -27,11 +29,15 @@ export class CourseCardComponent implements AfterViewInit {
     @Output('courseSelected')
     public courseEmitter = new EventEmitter<Course>();
 
-    @ContentChild(CourseImageComponent, { read: ElementRef })
-    public image: ElementRef;
+    @ContentChildren(CourseImageComponent, { read: ElementRef })
+    public images: QueryList<CourseImageComponent>;
+
+    public ngAfterContentInit(): void {
+        console.log(this.images);
+    }
 
     public ngAfterViewInit(): void {
-        console.log(this.image);
+        // console.log(this.images);
     }
 
     public onCourseView(): void {
