@@ -2,14 +2,16 @@
     <img class="logo" [src]="imgSource" />
 </div>
 
-<div class="courses">
+<div class="courses" #container>
     <course-card
+        #cardRef1
         (courseSelected)="onCourseSelected($event)"
         [course]="courses[0]"
         [index]="1"
     />
 
     <course-card
+        #cardRef2
         (courseSelected)="onCourseSelected($event)"
         [course]="courses[1]"
         [index]="2"
