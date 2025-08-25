@@ -12,7 +12,7 @@
     </ng-template>
 
     <course-card
-        highlighted
+        [highlighted]="true"
         (courseSelected)="onCourseSelected($event)"
         [course]="course"
         [noImageTpl]="blankImage"
