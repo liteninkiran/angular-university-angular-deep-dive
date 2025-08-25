@@ -26,4 +26,8 @@ export class AppComponent implements AfterViewInit {
     public ngAfterViewInit(): void {}
 
     public onCourseSelected(course: Course): void {}
+
+    public onToggle(isHighlighted: boolean): void {
+        console.log(isHighlighted);
+    }
 }

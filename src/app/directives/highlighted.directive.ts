@@ -1,4 +1,11 @@
-import { Directive, HostBinding, Input } from '@angular/core';
+import {
+    Directive,
+    EventEmitter,
+    HostBinding,
+    HostListener,
+    Input,
+    Output,
+} from '@angular/core';
 
 @Directive({
     selector: '[highlighted]',
@@ -10,25 +17,41 @@ export class HighlightedDirective {
     })
     public isHighlighted = false;
 
+    @Output()
+    public toggleHighlighted = new EventEmitter<boolean>();
+
     constructor() {}
 
     // @HostBinding('className')
-    // get cssClasses() {
+    // public get cssClasses() {
     //     return 'highlighted';
     // }
 
     // @HostBinding('style.border')
-    // get cssStyles() {
+    // public get cssStyles() {
     //     return '1px solid red';
     // }
 
     @HostBinding('class.highlighted')
-    get cssClasses() {
+    public get cssClasses() {
         return this.isHighlighted;
     }
 
     @HostBinding('attr.disabled')
-    get disabled() {
+    public get disabled() {
         return true;
+    }
+
+    @HostListener('mouseover', ['$event'])
+    public mouseOver($event: Event) {
+        // console.log($event);
+        this.isHighlighted = true;
+        this.toggleHighlighted.emit(this.isHighlighted);
+    }
+
+    @HostListener('mouseleave')
+    public mouseLeave() {
+        this.isHighlighted = false;
+        this.toggleHighlighted.emit(this.isHighlighted);
     }
 }

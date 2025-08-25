@@ -12,7 +12,8 @@
     </ng-template>
 
     <course-card
-        [highlighted]="true"
+        highlighted
+        (toggleHighlighted)="onToggle($event)"
         (courseSelected)="onCourseSelected($event)"
         [course]="course"
         [noImageTpl]="blankImage"
