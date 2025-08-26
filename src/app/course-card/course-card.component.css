@@ -1,22 +1,22 @@
-:host {
+course-card {
     display: block;
 }
 
-:host.is-first {
+course-card.is-first {
     border-top: 2px solid grey;
     padding-top: 20px;
 }
 
-:host.is-last {
+course-card.is-last {
     border-bottom: 2px solid grey;
     padding-top: 20px;
 }
 
-:host.is-even {
+course-card.is-even {
     background: lightgray;
 }
 
-:host.is-odd {
+course-card.is-odd {
     background: lightcyan;
 }
 
@@ -24,7 +24,7 @@
     background: lightsalmon;
 }
 
-:host-context(.salmon-theme) .course-card {
+.salmon-theme .course-card {
     background: lightsalmon;
 }
 
