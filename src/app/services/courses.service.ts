@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Course } from '../model/course';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
+const URL = '/api/courses';
 
 @Injectable({
     providedIn: 'root',
@@ -11,6 +13,13 @@ export class CoursesService {
 
     public loadCourses(): Observable<Course[]> {
         const params = new HttpParams().set('page', 1).set('pageSize', 3);
-        return this.http.get<Course[]>('/api/courses', { params });
+        return this.http.get<Course[]>(URL, { params });
+    }
+
+    public saveCourse(course: Course): Observable<Course> {
+        const headers = new HttpHeaders().set('X-Auth', 'userId');
+        return this.http.put<Course>(`${URL}/${course.id}`, course, {
+            headers,
+        });
     }
 }
