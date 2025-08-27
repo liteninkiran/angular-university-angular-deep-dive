@@ -7,7 +7,12 @@ const URL = '/api/courses';
 
 let counter = 0;
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+    // useClass: CoursesService,
+    // useFactory: (http: HttpClient) => new CoursesService(http),
+    // deps: [HttpClient],
+})
 export class CoursesService {
     public id: number = 0;
 
