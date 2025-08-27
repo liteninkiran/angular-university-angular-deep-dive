@@ -15,7 +15,7 @@ import { CoursesService } from '../services/courses.service';
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
     standalone: false,
-    changeDetection: ChangeDetectionStrategy.OnPush,
+    // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CourseCardComponent implements OnInit {
     @Input()
