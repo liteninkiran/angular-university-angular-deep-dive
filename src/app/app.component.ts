@@ -9,14 +9,7 @@ import { APP_CONFIG, AppConfig, CONFIG_TOKEN } from './config';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     standalone: false,
-    // // NOT tree-shakable:
-    // providers: [
-    //     {
-    //         provide: CONFIG_TOKEN,
-    //         // useFactory: () => APP_CONFIG,
-    //         useValue: APP_CONFIG,
-    //     },
-    // ],
+    providers: [CoursesService],
 })
 export class AppComponent implements OnInit {
     public courses$: Observable<Course[]>;
