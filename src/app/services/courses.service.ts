@@ -5,9 +5,16 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 const URL = '/api/courses';
 
+let counter = 0;
+
 @Injectable()
 export class CoursesService {
-    constructor(private http: HttpClient) {}
+    public id: number = 0;
+
+    constructor(private http: HttpClient) {
+        counter++;
+        this.id = counter;
+    }
 
     public loadCourses(): Observable<Course[]> {
         const params = new HttpParams().set('page', 1).set('pageSize', 3);

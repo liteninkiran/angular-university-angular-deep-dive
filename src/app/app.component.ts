@@ -13,7 +13,9 @@ import { CoursesService } from './services/courses.service';
 export class AppComponent implements OnInit {
     public courses$: Observable<Course[]>;
 
-    constructor(private coursesService: CoursesService) {}
+    constructor(private coursesService: CoursesService) {
+        console.log('Courses Service from App', this.coursesService.id);
+    }
 
     public ngOnInit(): void {
         this.courses$ = this.coursesService.loadCourses();

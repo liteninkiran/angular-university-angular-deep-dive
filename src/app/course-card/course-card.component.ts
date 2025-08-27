@@ -21,7 +21,7 @@ export class CourseCardComponent implements OnInit {
     constructor(private coursesService: CoursesService) {}
 
     public ngOnInit(): void {
-        console.log('Courses Service from Course Card', this.coursesService);
+        console.log('Courses Service from Course Card', this.coursesService.id);
     }
 
     public onSaveClicked(description: string): void {
