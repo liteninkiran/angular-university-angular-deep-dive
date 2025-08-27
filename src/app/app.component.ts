@@ -25,4 +25,12 @@ export class AppComponent implements OnInit {
             .saveCourse(course)
             .subscribe((data) => console.log(data));
     }
+
+    public onEditCourse(): void {
+        const description = 'New Value';
+        const course: Course = this.courses[0];
+        const newCourse: Course = { ...course, description };
+        this.courses[0] = newCourse;
+        // this.courses[0].description = description;
+    }
 }
