@@ -1,9 +1,8 @@
 import {
-    Attribute,
-    ChangeDetectionStrategy,
     Component,
     EventEmitter,
     Input,
+    OnDestroy,
     OnInit,
     Output,
 } from '@angular/core';
@@ -15,30 +14,27 @@ import { CoursesService } from '../services/courses.service';
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
     standalone: false,
-    // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent implements OnInit, OnDestroy {
     @Input()
     public course: Course;
 
     @Input()
     public cardIndex: number;
 
-    // Use attribute decorator to prevent Angular from re-checking if input has changed.
-    @Input()
-    public type: string;
-
     @Output('courseChanged')
     public courseEmitter = new EventEmitter<Course>();
 
-    constructor(
-        private coursesService: CoursesService, //@Attribute('type') private type: string,
-    ) {
-        //console.log(type);
+    constructor(private coursesService: CoursesService) {
+        console.log('Constructor', this.course);
     }
 
     public ngOnInit(): void {
-        console.log(this.type);
+        console.log('On Init', this.course);
+    }
+
+    public ngOnDestroy(): void {
+        console.log('On Destroy');
     }
 
     public onSaveClicked(description: string): void {
