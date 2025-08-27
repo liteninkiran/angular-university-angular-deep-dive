@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
     public courses$: Observable<Course[]>;
-    // public courses: Course[] = [];
 
     constructor(
         private coursesService: CoursesService,
@@ -27,10 +26,6 @@ export class AppComponent implements OnInit {
 
     public ngOnInit(): void {
         this.courses$ = this.coursesService.loadCourses();
-        // // Won't work with OnPush CD
-        // this.coursesService
-        //     .loadCourses()
-        //     .subscribe((courses) => (this.courses = courses));
     }
 
     public saveCourse(course: Course): void {

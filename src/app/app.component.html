@@ -10,6 +10,7 @@
         highlighted
         *ngFor="let course of courses"
         [course]="course"
+        type="beginner"
         (courseChanged)="saveCourse($event)"
     >
         <course-image [src]="course.iconUrl"></course-image>
