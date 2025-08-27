@@ -1,12 +1,4 @@
-import {
-    Component,
-    EventEmitter,
-    Input,
-    OnInit,
-    Output,
-    Self,
-    SkipSelf,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
 
@@ -27,7 +19,7 @@ export class CourseCardComponent implements OnInit {
     @Output('courseChanged')
     public courseEmitter = new EventEmitter<Course>();
 
-    constructor(@SkipSelf() private coursesService: CoursesService) {}
+    constructor(private coursesService: CoursesService) {}
 
     public ngOnInit(): void {}
 
