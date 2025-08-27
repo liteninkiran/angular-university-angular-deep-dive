@@ -7,7 +7,6 @@ import { CoursesService } from '../services/courses.service';
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
     standalone: false,
-    providers: [CoursesService],
 })
 export class CourseCardComponent implements OnInit {
     @Input()
@@ -25,5 +24,9 @@ export class CourseCardComponent implements OnInit {
 
     public onSaveClicked(description: string): void {
         this.courseEmitter.emit({ ...this.course, description });
+    }
+
+    public onTitleChanged(title: string) {
+        this.course.description = title;
     }
 }
