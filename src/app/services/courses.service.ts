@@ -18,8 +18,7 @@ export class CoursesService {
 
     public saveCourse(course: Course): Observable<Course> {
         const headers = new HttpHeaders().set('X-Auth', 'userId');
-        return this.http.put<Course>(`${URL}/${course.id}`, course, {
-            headers,
-        });
+        const url = `${URL}/${course.id}`;
+        return this.http.put<Course>(url, course, { headers });
     }
 }
