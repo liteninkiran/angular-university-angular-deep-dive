@@ -13,8 +13,8 @@ import {
     Output,
     SimpleChanges,
 } from '@angular/core';
-import { Course } from '../model/course';
-import { CoursesService } from '../services/courses.service';
+import { Course } from 'src/app/model/course';
+import { CoursesService } from 'src/app/courses/courses.service';
 
 @Component({
     selector: 'course-card',
