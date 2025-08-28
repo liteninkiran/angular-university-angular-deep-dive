@@ -1,5 +1,6 @@
 import {
     AfterContentChecked,
+    AfterViewChecked,
     Component,
     EventEmitter,
     Input,
@@ -19,7 +20,12 @@ import { CoursesService } from '../services/courses.service';
     standalone: false,
 })
 export class CourseCardComponent
-    implements OnInit, OnDestroy, OnChanges, AfterContentChecked
+    implements
+        OnInit,
+        OnDestroy,
+        OnChanges,
+        AfterContentChecked,
+        AfterViewChecked
 {
     @Input()
     public course: Course;
@@ -44,6 +50,13 @@ export class CourseCardComponent
 
         // // This will generate a ExpressionChangedAfterItHasBeenCheckedError error because iconUrl is used in the content of the component
         // this.course.iconUrl = '';
+    }
+
+    public ngAfterViewChecked(): void {
+        console.log('After View Checked');
+
+        // // This will generate a ExpressionChangedAfterItHasBeenCheckedError error
+        // this.course.description = 'After View Checked';
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
