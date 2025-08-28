@@ -21,10 +21,7 @@
     </div>
 </div>
 
-<div
-    class="courses"
-    *ngFor="let course of courses | filterByCategory : 'BEGINNER'"
->
+<div class="courses" *ngFor="let course of courses">
     <course-card [course]="course" (courseChanged)="saveCourse($event)">
         <course-image [src]="course.iconUrl"></course-image>
     </course-card>
