@@ -1,7 +1,10 @@
 import {
     AfterContentChecked,
+    AfterContentInit,
     AfterViewChecked,
+    AfterViewInit,
     Component,
+    DoCheck,
     EventEmitter,
     Input,
     OnChanges,
@@ -25,7 +28,10 @@ export class CourseCardComponent
         OnDestroy,
         OnChanges,
         AfterContentChecked,
-        AfterViewChecked
+        AfterViewChecked,
+        AfterContentInit,
+        AfterViewInit,
+        DoCheck
 {
     @Input()
     public course: Course;
@@ -39,24 +45,29 @@ export class CourseCardComponent
     constructor(private coursesService: CoursesService) {
         console.log('Constructor', this.course);
     }
+
     public ngOnInit(): void {
         console.log('On Init', this.course);
     }
 
+    public ngDoCheck(): void {
+        console.log('Do Check');
+    }
+
+    public ngAfterContentInit(): void {
+        console.log('After Content Init');
+    }
+
     public ngAfterContentChecked(): void {
         console.log('After Content Checked');
-        this.course.description = 'After Content Checked';
-        this.course.category = 'ADVANCED';
+    }
 
-        // // This will generate a ExpressionChangedAfterItHasBeenCheckedError error because iconUrl is used in the content of the component
-        // this.course.iconUrl = '';
+    public ngAfterViewInit(): void {
+        console.log('After View Init');
     }
 
     public ngAfterViewChecked(): void {
         console.log('After View Checked');
-
-        // // This will generate a ExpressionChangedAfterItHasBeenCheckedError error
-        // this.course.description = 'After View Checked';
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
