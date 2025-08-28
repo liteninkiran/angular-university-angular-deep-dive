@@ -9,12 +9,11 @@
     <button (click)="onEditCourse()" i18n>Edit Course</button>
 </div>
 
-<div class="courses" *ngIf="courses[0] as course">
-    <course-card
-        highlighted
-        [course]="course"
-        (courseChanged)="saveCourse($event)"
-    >
+<div
+    class="courses"
+    *ngFor="let course of courses | filterByCategory : 'BEGINNER'"
+>
+    <course-card [course]="course" (courseChanged)="saveCourse($event)">
         <course-image [src]="course.iconUrl"></course-image>
     </course-card>
 </div>

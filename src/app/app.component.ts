@@ -28,10 +28,6 @@ export class AppComponent implements OnInit {
     }
 
     public onEditCourse() {
-        // This won't trigger ngOnChanges
-        // this.courses[0].description = 'Changed';
-
-        // This will trigger ngOnChanges
         this.courses[0] = { ...this.courses[0], description: 'Changed' };
     }
 }
