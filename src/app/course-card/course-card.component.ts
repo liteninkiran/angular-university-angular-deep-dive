@@ -1,4 +1,5 @@
 import {
+    AfterContentChecked,
     Component,
     EventEmitter,
     Input,
@@ -6,7 +7,6 @@ import {
     OnDestroy,
     OnInit,
     Output,
-    SimpleChange,
     SimpleChanges,
 } from '@angular/core';
 import { Course } from '../model/course';
@@ -18,7 +18,9 @@ import { CoursesService } from '../services/courses.service';
     styleUrls: ['./course-card.component.css'],
     standalone: false,
 })
-export class CourseCardComponent implements OnInit, OnDestroy, OnChanges {
+export class CourseCardComponent
+    implements OnInit, OnDestroy, OnChanges, AfterContentChecked
+{
     @Input()
     public course: Course;
 
@@ -31,9 +33,17 @@ export class CourseCardComponent implements OnInit, OnDestroy, OnChanges {
     constructor(private coursesService: CoursesService) {
         console.log('Constructor', this.course);
     }
-
     public ngOnInit(): void {
         console.log('On Init', this.course);
+    }
+
+    public ngAfterContentChecked(): void {
+        console.log('After Content Checked');
+        this.course.description = 'After Content Checked';
+        this.course.category = 'ADVANCED';
+
+        // // This will generate a ExpressionChangedAfterItHasBeenCheckedError error because iconUrl is used in the content of the component
+        // this.course.iconUrl = '';
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
