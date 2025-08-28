@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
     }
 
     public onEditCourse() {
-        this.courses[0] = { ...this.courses[0], description: 'Changed' };
+        this.courses[0].category = 'ADVANCED';
+        // this.courses[0] = { ...this.courses[0], category: 'ADVANCED' };
     }
 }
