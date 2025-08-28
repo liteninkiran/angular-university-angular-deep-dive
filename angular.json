@@ -79,11 +79,10 @@
                   "maximumWarning": "6kb"
                 }
               ],
+              "localize": ["fr"],
               "outputPath": {
                 "base": "dist/angular-course-fr/"
               },
-              "i18nFile": "src/locale/messages.fr.xlf",
-              "i18nLocale": "fr",
               "i18nMissingTranslation": "ignore"
             }
           }
