@@ -21,7 +21,6 @@ export const COURSES: Course[] = [
         category: 'BEGINNER',
         lessonsCount: 10,
     },
-
     {
         id: 3,
         description: 'NgRx In Depth',
@@ -32,7 +31,6 @@ export const COURSES: Course[] = [
         category: 'ADVANCED',
         lessonsCount: 10,
     },
-
     {
         id: 4,
         description: 'Angular for Beginners',

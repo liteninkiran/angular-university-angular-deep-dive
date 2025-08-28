@@ -6,7 +6,6 @@
 </div>
 
 <div class="demo">
-    <!-- 9209205854597490691 -->
     <h4
         i18n="
             welcome message|Greet the user at the beginning of the
@@ -15,6 +14,11 @@
         Welcome To The Angular Core Deep Dive Course
     </h4>
     <button (click)="onEditCourse()" i18n>Edit Course</button>
+
+    <div i18n>
+        { numCourses, plural, =0 {No courses available} =1 {One course
+        available} other {{{numCourses}} courses available} }
+    </div>
 </div>
 
 <div

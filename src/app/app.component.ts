@@ -12,6 +12,7 @@ import { COURSES } from 'src/db-data';
 })
 export class AppComponent implements OnInit {
     public courses = COURSES;
+    public numCourses = COURSES.length;
 
     constructor(
         private coursesService: CoursesService,
@@ -29,6 +30,5 @@ export class AppComponent implements OnInit {
 
     public onEditCourse() {
         this.courses[0].category = 'ADVANCED';
-        // this.courses[0] = { ...this.courses[0], category: 'ADVANCED' };
     }
 }
