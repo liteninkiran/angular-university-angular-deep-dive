@@ -1,8 +1,16 @@
-import { ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
+import {
+    ChangeDetectorRef,
+    Component,
+    Inject,
+    Injector,
+    OnInit,
+} from '@angular/core';
 import { Course } from './model/course';
 import { CoursesService } from './courses/courses.service';
 import { AppConfig, CONFIG_TOKEN } from './config';
 import { COURSES } from 'src/db-data';
+import { createCustomElement, NgElementConfig } from '@angular/elements';
+import { CourseTitleComponent } from './course-title/course-title.component';
 
 @Component({
     selector: 'app-root',
@@ -18,9 +26,16 @@ export class AppComponent implements OnInit {
         private coursesService: CoursesService,
         private cd: ChangeDetectorRef,
         @Inject(CONFIG_TOKEN) private config: AppConfig,
+        private injector: Injector,
     ) {}
 
-    public ngOnInit(): void {}
+    public ngOnInit(): void {
+        const config: NgElementConfig = {
+            injector: this.injector,
+        };
+        const htmlElement = createCustomElement(CourseTitleComponent, config);
+        customElements.define('course-title', htmlElement);
+    }
 
     public saveCourse(course: Course): void {
         this.coursesService
