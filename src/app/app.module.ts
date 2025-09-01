@@ -7,15 +7,9 @@ import {
     provideHttpClient,
     withInterceptorsFromDi,
 } from '@angular/common/http';
-import { CoursesModule } from './courses/courses.module';
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        CoursesModule,
-        AppComponent,
-    ],
+    imports: [BrowserModule, BrowserAnimationsModule, AppComponent],
     providers: [provideHttpClient(withInterceptorsFromDi())],
 })
 export class AppModule {}
