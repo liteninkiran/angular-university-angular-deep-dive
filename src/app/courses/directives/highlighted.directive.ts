@@ -10,7 +10,7 @@ import {
 @Directive({
     selector: '[highlighted]',
     exportAs: 'hl',
-    standalone: false,
+    standalone: true,
 })
 export class HighlightedDirective {
     @Input('highlighted')

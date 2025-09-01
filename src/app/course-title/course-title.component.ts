@@ -4,7 +4,7 @@ import { Component, Input } from '@angular/core';
     selector: 'course-title',
     templateUrl: './course-title.component.html',
     styleUrl: './course-title.component.css',
-    standalone: false,
+    standalone: true,
 })
 export class CourseTitleComponent {
     @Input() public title: string;

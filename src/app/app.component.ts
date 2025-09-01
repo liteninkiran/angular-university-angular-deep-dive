@@ -11,12 +11,14 @@ import { AppConfig, CONFIG_TOKEN } from './config';
 import { COURSES } from 'src/db-data';
 import { createCustomElement, NgElementConfig } from '@angular/elements';
 import { CourseTitleComponent } from './course-title/course-title.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
-    standalone: false,
+    standalone: true,
+    imports: [CommonModule],
 })
 export class AppComponent implements OnInit {
     public courses = COURSES;
