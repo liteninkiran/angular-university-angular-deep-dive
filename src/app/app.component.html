@@ -5,24 +5,10 @@
     />
 </div>
 
-<div class="demo">
-    <h4
-        i18n="
-            welcome message|Greet the user at the beginning of the
-            course@@welcomeMessage"
-    >
-        Welcome To The Angular Core Deep Dive Course
-    </h4>
-    <button (click)="onEditCourse()" i18n>Edit Course</button>
-
-    <div i18n>
-        { numCourses, plural, =0 {No courses available} =1 {One course
-        available} other {{{numCourses}} courses available} }
-    </div>
-</div>
-
-<div class="courses" *ngFor="let course of courses">
-    <course-card [course]="course" (courseChanged)="saveCourse($event)">
-        <course-image [src]="course.iconUrl"></course-image>
-    </course-card>
+<div class="courses">
+    @for (course of courses$ | async; track course.id) {
+        <course-card [course]="course" (courseChanged)="saveCourse($event)">
+            <course-image [src]="course.iconUrl"></course-image>
+        </course-card>
+    }
 </div>
