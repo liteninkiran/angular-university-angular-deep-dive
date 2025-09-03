@@ -5,7 +5,7 @@
     />
 </div>
 
-@defer {
+@defer (on immediate; prefetch on immediate) {
     <div class="courses">
         @for (course of courses$ | async; track course.id) {
             <course-card [course]="course" (courseChanged)="saveCourse($event)">
