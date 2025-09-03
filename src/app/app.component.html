@@ -5,7 +5,7 @@
     />
 </div>
 
-@defer (on immediate; prefetch on immediate) {
+@defer (on timer(3s); prefetch on timer(5s)) {
     <div class="courses">
         @for (course of courses$ | async; track course.id) {
             <course-card [course]="course" (courseChanged)="saveCourse($event)">
@@ -15,6 +15,6 @@
     </div>
 } @placeholder {
     <h1>Placeholder Content</h1>
-} @loading (minimum 3s; after 1s) {
+} @loading {
     <h1>Loading Content</h1>
 }
