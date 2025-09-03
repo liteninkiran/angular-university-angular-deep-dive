@@ -1,14 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from 'src/app/model/course';
 import { CoursesService } from 'src/app/courses/courses.service';
-import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'course-card',
     templateUrl: './course-card.component.html',
     styleUrls: ['./course-card.component.css'],
     standalone: true,
-    imports: [NgIf],
 })
 export class CourseCardComponent {
     @Input()
