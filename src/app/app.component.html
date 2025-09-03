@@ -5,13 +5,20 @@
     />
 </div>
 
-<div class="demo-triggers">
-    <input type="text" placeholder="Type to Trigger Prefetch" #prefetch />
+<div
+    style="
+        border: 5px solid red;
+        min-height: 200px;
+        margin: 10px;
+        padding: 10px;
+    "
+    #triggerDisplay
+>
     <button #display>Trigger Display</button>
 </div>
 
 <div>
-    @defer (on interaction(display); prefetch on interaction(prefetch)) {
+    @defer (on interaction(display); prefetch on hover(triggerDisplay)) {
         <div class="courses">
             @for (course of courses$ | async; track course.id) {
                 <course-card
