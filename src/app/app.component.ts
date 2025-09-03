@@ -15,6 +15,8 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
     public courses$: Observable<Course[]>;
+    public performPrefetch = false;
+    public display = false;
 
     constructor(private coursesService: CoursesService) {}
 
@@ -26,5 +28,13 @@ export class AppComponent implements OnInit {
         this.coursesService
             .saveCourse(course)
             .subscribe((data) => console.log(data));
+    }
+
+    public onPrefetch(): void {
+        this.performPrefetch = true;
+    }
+
+    public onDisplay(): void {
+        this.display = true;
     }
 }
