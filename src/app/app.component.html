@@ -5,10 +5,12 @@
     />
 </div>
 
-<div class="courses">
-    @for (course of courses$ | async; track course.id) {
-        <course-card [course]="course" (courseChanged)="saveCourse($event)">
-            <course-image [src]="course.iconUrl"></course-image>
-        </course-card>
-    }
-</div>
+@defer {
+    <div class="courses">
+        @for (course of courses$ | async; track course.id) {
+            <course-card [course]="course" (courseChanged)="saveCourse($event)">
+                <course-image [src]="course.iconUrl"></course-image>
+            </course-card>
+        }
+    </div>
+}
