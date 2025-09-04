@@ -15,7 +15,9 @@ import { Course } from 'src/app/model/course';
     standalone: true,
 })
 export class CourseCardComponent {
-    public course = input<Course>();
+    public course = input<Course>(null, {
+        alias: 'tutorial',
+    });
 
     @Input()
     public cardIndex: number;
