@@ -7,5 +7,7 @@
 
 <div class="courses">
     <div>Counter: {{ counter() }}</div>
+    <div>Course: {{ course() | json }}</div>
+    <div>Courses: {{ courses().join(' | ') }}</div>
     <button (click)="increment()">Increment</button>
 </div>
