@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,15 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
     public counter = signal(0);
-    public course = signal({
-        id: 1,
-        title: 'Angular For Beginners',
+    public derivedCounter = computed(() => {
+        const counter = this.counter();
+        return counter * 10;
     });
-    public courses = signal([
-        'Angular For Beginners',
-        'Reactive Angular',
-        'Signals Deep Dive',
-    ]);
 
     constructor() {}
 
@@ -26,10 +21,5 @@ export class AppComponent implements OnInit {
 
     public increment(): void {
         this.counter.update((val) => val + 1);
-        this.course.set({
-            id: 1,
-            title: 'Hello World',
-        });
-        this.courses.update((courses) => [...courses, 'New Course']);
     }
 }
