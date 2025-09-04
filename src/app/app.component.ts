@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Course } from './model/course';
-import { CoursesService } from './courses/courses.service';
-import { Observable } from 'rxjs';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -12,22 +9,13 @@ import { CommonModule } from '@angular/common';
     imports: [CommonModule],
 })
 export class AppComponent implements OnInit {
-    public courses$: Observable<Course[]>;
-    public counter = 0;
+    public counter = signal(0);
 
-    constructor(private coursesService: CoursesService) {}
+    constructor() {}
 
-    public ngOnInit(): void {
-        this.courses$ = this.coursesService.loadCourses();
-    }
-
-    public saveCourse(course: Course): void {
-        this.coursesService
-            .saveCourse(course)
-            .subscribe((data) => console.log(data));
-    }
+    public ngOnInit(): void {}
 
     public increment(): void {
-        this.counter++;
+        this.counter.set(this.counter() + 1);
     }
 }
