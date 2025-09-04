@@ -1,4 +1,11 @@
-import { Component, computed, effect, OnInit, signal } from '@angular/core';
+import {
+    Component,
+    computed,
+    effect,
+    EffectRef,
+    OnInit,
+    signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,10 +18,14 @@ import { CommonModule } from '@angular/common';
 export class AppComponent implements OnInit {
     public counter = signal(0);
     public derivedCounter = computed(() => this.counter() * 10);
+    public effectRef: EffectRef;
 
     constructor() {
-        effect(
-            () => {
+        this.effectRef = effect(
+            (onCleanup) => {
+                onCleanup(() => {
+                    console.log('Clean Up');
+                });
                 const counterValue = this.counter();
                 const derivedValue = this.derivedCounter();
                 console.log(
@@ -22,8 +33,8 @@ export class AppComponent implements OnInit {
                 );
             },
             {
-                allowSignalWrites: true, // Depracated, always true
-                manualCleanup: false,
+                allowSignalWrites: true,
+                manualCleanup: true,
                 debugName: 'myEffect',
             },
         );
@@ -33,5 +44,9 @@ export class AppComponent implements OnInit {
 
     public incrementCounter(): void {
         this.counter.update((val) => val + 1);
+    }
+
+    public onCleanup(): void {
+        this.effectRef.destroy();
     }
 }
