@@ -6,7 +6,9 @@
 </div>
 
 <div class="courses">
-    <div>Counter: {{ counterService.counter() }}</div>
-    <div>Derived Counter: {{ derivedCounter() }}</div>
-    <button (click)="incrementCounter()">Counter++</button>
+    @for (course of courses$ | async; track course.id) {
+        <course-card [course]="course" (courseChanged)="saveCourse($event)">
+            <course-image [src]="course.iconUrl"></course-image>
+        </course-card>
+    }
 </div>
