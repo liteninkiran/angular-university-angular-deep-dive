@@ -11,11 +11,13 @@ import { CommonModule } from '@angular/common';
 export class AppComponent implements OnInit {
     public counter = signal(0);
 
-    constructor() {}
+    constructor() {
+        // const readOnlySignal = this.counter.asReadonly();
+    }
 
     public ngOnInit(): void {}
 
     public increment(): void {
-        this.counter.set(this.counter() + 1);
+        this.counter.update((val) => val + 1);
     }
 }
