@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Course } from './model/course';
 import { CoursesService } from './courses/courses.service';
-import { CourseCardComponent } from './courses/course-card/course-card.component';
-import { CourseImageComponent } from './courses/course-image/course-image.component';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 
@@ -11,12 +9,11 @@ import { CommonModule } from '@angular/common';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     standalone: true,
-    imports: [CourseCardComponent, CourseImageComponent, CommonModule],
+    imports: [CommonModule],
 })
 export class AppComponent implements OnInit {
     public courses$: Observable<Course[]>;
-    public performPrefetch = false;
-    public display = false;
+    public counter = 0;
 
     constructor(private coursesService: CoursesService) {}
 
@@ -30,11 +27,7 @@ export class AppComponent implements OnInit {
             .subscribe((data) => console.log(data));
     }
 
-    public onPrefetch(): void {
-        this.performPrefetch = true;
-    }
-
-    public onDisplay(): void {
-        this.display = true;
+    public increment(): void {
+        this.counter++;
     }
 }

@@ -5,35 +5,7 @@
     />
 </div>
 
-<div
-    style="
-        border: 5px solid red;
-        min-height: 200px;
-        margin: 10px;
-        padding: 10px;
-    "
->
-    <button (click)="onPrefetch()">Trigger Display</button>
-    <button (click)="onDisplay()" #display>Trigger Prefetch</button>
-</div>
-
-<div>
-    @defer (when display; prefetch when performPrefetch) {
-        <div class="courses">
-            @for (course of courses$ | async; track course.id) {
-                <course-card
-                    [course]="course"
-                    (courseChanged)="saveCourse($event)"
-                >
-                    <course-image [src]="course.iconUrl"></course-image>
-                </course-card>
-            }
-        </div>
-    } @placeholder {
-        <h1>Placeholder Content</h1>
-    } @loading {
-        <h1>Loading Content</h1>
-    } @error {
-        <h1>Error Content</h1>
-    }
+<div class="courses">
+    <div>Counter: {{ counter }}</div>
+    <button (click)="increment()">Increment</button>
 </div>
