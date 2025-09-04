@@ -1,4 +1,4 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
+import { Component, computed, effect, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -10,21 +10,28 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent implements OnInit {
     public counter = signal(0);
-    public derivedCounter = computed(() => {
-        const counter = this.counter();
-        return this.multiplier >= 10 ? counter * 10 : 0;
-    });
-    public multiplier = 0;
+    public derivedCounter = computed(() => this.counter() * 10);
 
-    constructor() {}
+    constructor() {
+        effect(
+            () => {
+                const counterValue = this.counter();
+                const derivedValue = this.derivedCounter();
+                console.log(
+                    `Counter: ${counterValue} | Derived: ${derivedValue}`,
+                );
+            },
+            {
+                allowSignalWrites: true, // Depracated, always true
+                manualCleanup: false,
+                debugName: 'myEffect',
+            },
+        );
+    }
 
     public ngOnInit(): void {}
 
     public incrementCounter(): void {
         this.counter.update((val) => val + 1);
-    }
-
-    public incrementMultiplier(): void {
-        this.multiplier++;
     }
 }
