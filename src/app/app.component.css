@@ -11,3 +11,7 @@
     max-width: 800px;
     margin: 50px auto;
 }
+
+button {
+    margin-right: 10px;
+}

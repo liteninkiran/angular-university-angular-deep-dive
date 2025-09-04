@@ -12,14 +12,19 @@ export class AppComponent implements OnInit {
     public counter = signal(0);
     public derivedCounter = computed(() => {
         const counter = this.counter();
-        return counter * 10;
+        return this.multiplier >= 10 ? counter * 10 : 0;
     });
+    public multiplier = 0;
 
     constructor() {}
 
     public ngOnInit(): void {}
 
-    public increment(): void {
+    public incrementCounter(): void {
         this.counter.update((val) => val + 1);
+    }
+
+    public incrementMultiplier(): void {
+        this.multiplier++;
     }
 }
