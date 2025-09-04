@@ -1,12 +1,6 @@
-import {
-    Component,
-    computed,
-    effect,
-    EffectRef,
-    OnInit,
-    signal,
-} from '@angular/core';
+import { Component, computed, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { CounterService } from './counter.service';
 
 @Component({
     selector: 'app-root',
@@ -16,37 +10,14 @@ import { CommonModule } from '@angular/common';
     imports: [CommonModule],
 })
 export class AppComponent implements OnInit {
-    public counter = signal(0);
-    public derivedCounter = computed(() => this.counter() * 10);
-    public effectRef: EffectRef;
+    public counter = this.counterService.counter();
+    public derivedCounter = computed(() => this.counterService.counter() * 10);
 
-    constructor() {
-        this.effectRef = effect(
-            (onCleanup) => {
-                onCleanup(() => {
-                    console.log('Clean Up');
-                });
-                const counterValue = this.counter();
-                const derivedValue = this.derivedCounter();
-                console.log(
-                    `Counter: ${counterValue} | Derived: ${derivedValue}`,
-                );
-            },
-            {
-                allowSignalWrites: true,
-                manualCleanup: true,
-                debugName: 'myEffect',
-            },
-        );
-    }
+    constructor(public counterService: CounterService) {}
 
     public ngOnInit(): void {}
 
     public incrementCounter(): void {
-        this.counter.update((val) => val + 1);
-    }
-
-    public onCleanup(): void {
-        this.effectRef.destroy();
+        this.counterService.increment();
     }
 }

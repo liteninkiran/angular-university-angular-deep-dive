@@ -6,8 +6,7 @@
 </div>
 
 <div class="courses">
-    <div>Counter: {{ counter() }}</div>
+    <div>Counter: {{ counterService.counter() }}</div>
     <div>Derived Counter: {{ derivedCounter() }}</div>
     <button (click)="incrementCounter()">Counter++</button>
-    <button (click)="onCleanup()">Clean Up</button>
 </div>
