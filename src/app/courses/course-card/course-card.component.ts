@@ -2,10 +2,10 @@ import {
     Component,
     EventEmitter,
     Input,
+    OnChanges,
     OnInit,
     Output,
-    computed,
-    input,
+    SimpleChanges,
 } from '@angular/core';
 import { Course } from 'src/app/model/course';
 
@@ -15,8 +15,9 @@ import { Course } from 'src/app/model/course';
     styleUrls: ['./course-card.component.css'],
     standalone: true,
 })
-export class CourseCardComponent implements OnInit {
-    public course = input<Course>();
+export class CourseCardComponent implements OnInit, OnChanges {
+    @Input()
+    public course: Course;
 
     @Input()
     public cardIndex: number;
@@ -26,18 +27,19 @@ export class CourseCardComponent implements OnInit {
 
     constructor() {}
 
-    public ngOnInit(): void {
-        const description = computed(() => {
-            const course = this.course();
-            return `${course.description} (${course.category})`;
-        });
+    public ngOnInit(): void {}
+
+    public ngOnChanges(changes: SimpleChanges): void {
+        if (changes['course']) {
+            console.log(`New course: `, this.course);
+        }
     }
 
     public onSaveClicked(description: string): void {
-        this.courseEmitter.emit({ ...this.course(), description });
+        this.courseEmitter.emit({ ...this.course, description });
     }
 
     public onTitleChanged(title: string) {
-        this.course().description = title;
+        this.course.description = title;
     }
 }

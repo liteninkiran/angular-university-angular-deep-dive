@@ -1,10 +1,10 @@
-@if (course()) {
+@if (course) {
     <div class="course-card" #container>
         <div class="course-title">
-            <course-title [title]="course().description" />
+            <course-title [title]="course.description" />
         </div>
 
-        @if (course().iconUrl) {
+        @if (course.iconUrl) {
             <ng-content select="course-image"></ng-content>
         }
 
@@ -12,14 +12,14 @@
             Edit Title:
             <input
                 #courseTitle
-                [value]="course().description"
+                [value]="course.description"
                 (keyup)="onTitleChanged(courseTitle.value)"
             />
         </div>
 
         <div class="course-category">
             <div class="category" i18n>
-                {course().category, select,
+                {course.category, select,
                     BEGINNER {Beginner}
                     INTERMEDIATE {Intermediate}
                     ADVANCED {Advanced}
